@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#228B22" />
+  <title>Bake: Weed Simulator Enhanced</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" href="favicon.ico" />
+</head>
+<body>
+  <main class="main-container">
+    <header>
+      <h1>🌿 Bake: Enhanced Weed Simulator</h1>
+    </header>
+
+    <section class="level-display" aria-label="Player Level and Experience">
+      <div>Level <span id="level">1</span> Grower | <span id="title">Novice</span></div>
+      <div
+        class="xp-bar"
+        role="progressbar"
+        aria-valuemin="0"
+        aria-valuemax="100"
+        aria-valuenow="0"
+        id="xp-bar"
+      >
+        <div class="xp-fill" id="xp-fill"></div>
+      </div>
+      <div>XP: <span id="xp">0</span> / <span id="xp-needed">100</span></div>
+    </section>
+
+    <section class="weather-display" aria-label="Weather Information">
+      <div>
+        Weather: <span id="weather">Sunny</span> |
+        Temperature: <span id="temp">72°F</span> |
+        Growth Bonus: <span id="weather-bonus">+0%</span>
+      </div>
+    </section>
+
+    <section class="stats-grid" aria-label="Player Statistics">
+      <div class="stat-card">
+        <div class="stat-value" id="money">200</div>
+        <div class="stat-label">💰 Money</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value" id="weed">0</div>
+        <div class="stat-label">🌱 Weed (grams)</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value" id="seeds">0</div>
+        <div class="stat-label">🌾 Seeds</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value" id="total-harvested">0</div>
+        <div class="stat-label">📊 Total Harvested</div>
+      </div>
+    </section>
+
+    <section id="pots" class="pots" aria-label="Plant Pots"></section>
+
+    <button class="sell-button" aria-label="Sell all weed" onclick="sellWeed()">
+      💰 Sell All Weed
+    </button>
+
+    <section class="shop" aria-label="Upgrades and Shop">
+      <h2>🛒 Upgrades & Shop</h2>
+      <div class="shop-grid">
+        <article class="shop-category" aria-label="Seeds and Basics">
+          <h3>🌾 Seeds & Basics</h3>
+          <button onclick="buySeed()">Buy Seed ($5)</button>
+          <button onclick="buyFertilizer()">Fertilizer ($30)</button>
+          <button onclick="buyBulkSeeds()">10 Seeds ($40)</button>
+        </article>
+
+        <article class="shop-category" aria-label="Equipment">
+          <h3>🔧 Equipment</h3>
+          <button onclick="buyUpgrade('soil')">Better Soil ($50)</button>
+          <button onclick="buyUpgrade('lights')">Grow Lights ($100)</button>
+          <button onclick="buyUpgrade('sprinkler')">Sprinkler ($150)</button>
+          <button onclick="buyUpgrade('greenhouse')">Greenhouse ($500)</button>
+        </article>
+
+        <article class="shop-category" aria-label="Genetics">
+          <h3>🌱 Genetics</h3>
+          <button onclick="buyStrain('indica')">Indica Seeds ($25)</button>
+          <button onclick="buyStrain('sativa')">Sativa Seeds ($35)</button>
+          <button onclick="buyStrain('hybrid')">Hybrid Seeds ($50)</button>
+        </article>
+
+        <article class="shop-category" aria-label="Automation">
+          <h3>🏭 Automation</h3>
+          <button onclick="buyUpgrade('autopot')">Auto-Pot ($200)</button>
+          <button onclick="buyUpgrade('harvester')">Auto-Harvester ($400)</button>
+          <button onclick="buyUpgrade('processor')">Auto-Processor ($800)</button>
+        </article>
+      </div>
+    </section>
+
+    <section class="achievements" aria-label="Achievements">
+      <h2>🏆 Achievements</h2>
+      <div id="achievements-list"></div>
+    </section>
+  </main>
+
+  <aside
+    id="level-up-modal"
+    class="modal"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="level-up-title"
+    aria-describedby="level-up-text"
+  >
+    <div class="modal-content">
+      <button class="close" aria-label="Close level up modal" onclick="closeLevelUpModal()">
+        &times;
+      </button>
+      <h2 id="level-up-title">🎉 Level Up!</h2>
+      <p id="level-up-text"></p>
+    </div>
+  </aside>
+
+  <script src="script.js"></script>
+</body>
+</html>
